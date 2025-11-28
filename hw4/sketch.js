@@ -1,0 +1,135 @@
+let startFrame;
+
+function setup() {
+  createCanvas(400, 400);
+  startFrame = frameCount;
+}
+
+function draw() {
+  let elapsedFrames = frameCount - startFrame;
+  let circleX = width - elapsedFrames * 1; 
+  let baseW = 70;
+  let baseH = 70;
+
+  let growth = (sin(elapsedFrames * 0.05) + 1) / 2;  
+  let w = 100 + growth * 40;
+  let h = 70 + growth * 25;
+  let centerX = 200;
+  let centerY = 265;
+  let x = centerX - w / 2;
+  let y = centerY - h / 2;
+  let offset = sin(frameCount * 0.05) * 10;
+  let offset2 = sin(frameCount * 0.05) * 15;
+  
+  createCanvas(400, 400);
+  background('#61c9ce');
+  
+  noStroke();
+  
+  if (elapsedFrames > 120) {
+    background('#F37A1B');
+  }
+  if (elapsedFrames > 240) {
+    background('#DF5C0F');
+  }
+  if (elapsedFrames > 580) {
+    background('#170186FF');
+    fill('#EACF59FF')
+    circle(60, 60, 90, 90)
+  }
+  
+  fill('#7bb47b');
+  rect(0, 250, 400, 150);
+  
+  fill('#cd5c5c');
+  circle(circleX, 0, 200);
+  fill('#de5151');
+  circle(circleX, 0, 150);
+  fill('#cd143c');
+  circle(circleX, 0, 100);
+  
+  fill('#c89556');
+  ellipse(200, 320, 200, 400);
+  
+  stroke('#228b22')
+  strokeWeight(4)
+  line(150, 300, 140, 340 + offset);
+  line(161, 300 + offset, 167, 330 + offset);
+  line(168, 300, 180, 333 + offset);
+  line(172, 300 + offset2, 169, 340 + offset);
+  line(180, 300 + offset, 190, 335 + offset);
+  line(250, 300, 260, 338 + offset);
+  line(230, 300 + offset2, 210, 330 + offset);
+  line(240, 300 + offset, 243, 320 + offset);
+  line(200, 300, 190, 325 + offset);
+  
+  line(20, 280, 15, 240);
+  line(30, 280, 30, 240);
+  line(40, 280, 45, 240);
+  
+  line(50, 380, 45, 340);
+  line(60, 380, 60, 340);
+  line(70, 380, 75, 340);
+  
+  line(350, 280, 345, 240);
+  line(360, 280, 360, 240);
+  line(370, 280, 375, 240);
+  
+  line(325, 350, 320, 320);
+  line(335, 350, 335, 320);
+  line(345, 350, 350, 320);
+  
+  noStroke();
+  
+  fill('#c7a468');
+  quad(120, 120, 280, 120, 250, 230, 150, 230); // 얼굴
+  
+  fill('#CDBA64')
+  quad(188, 200, 212, 200, 225, 230, 175, 230); // 코위
+  
+  fill('#c89556');
+  quad(160,80, 240, 80, 212, 200, 188, 200); // 코위 위
+  
+  quad(160, 80, 240, 80, 280, 120, 120, 120); // 얼굴 위
+  
+  quad(80, 80, 160, 80, 120, 120, 90, 120);// 왼쪽귀
+  
+  triangle(80, 80, 120, 70, 160, 80);
+  
+  quad(240, 80, 320, 80, 310, 120, 280, 120); // 오른쪽귀
+  
+  triangle(240, 80, 280, 70, 320, 80);
+  
+  arc(200, 80, 80, 50, PI, TWO_PI);
+  
+  fill(255)
+  triangle(120, 120, 170, 120, 145, 140);
+  
+  triangle(230, 120, 280, 120, 255, 140);
+  
+  noStroke();
+  
+  fill('#CDBA64');
+  rect(x, y, w, h)
+  fill(0);
+  circle(145, 127, 18);
+  
+  circle(255, 127, 18);
+  
+  circle( 175, 265, 10);
+  
+  circle( 225, 265, 10);
+  
+  fill(100);
+  arc(200, 265, 60, 60, 0, PI);
+  
+  fill('#CDBA64');
+  arc(200, 265, 40, 40, 0, PI);
+  
+}
+
+function keyPressed() {
+  if (key === 's') {
+    saveGif('mySketch', 10);
+  }
+}
